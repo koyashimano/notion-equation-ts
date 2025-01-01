@@ -1,9 +1,12 @@
+#!/usr/bin/env node
+
 import { Client, iteratePaginatedAPI } from "@notionhq/client";
 import {
   AppendBlockChildrenParameters,
   RichTextItemResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import dotenv from "dotenv";
+import path from "path";
 
 import {
   ParentType,
@@ -14,7 +17,7 @@ import {
 } from "./types";
 import { getAuthToken, getPageId, getRichTexts } from "./utils";
 
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 function convertEquationsInRichTexts(
   richTexts: RichTextItemResponse[],
