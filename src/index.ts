@@ -62,7 +62,7 @@ function convertEquationsInRichTexts(
           newBlocks.push({
             type: "equation",
             equation: {
-              expression: text.slice(2, -2),
+              expression: text.slice(2, -2).trim(),
             },
             parent: parent,
             object: "block",
@@ -75,9 +75,9 @@ function convertEquationsInRichTexts(
           addRichText({
             type: "equation",
             equation: {
-              expression: text.slice(1, -1),
+              expression: text.slice(1, -1).trim(),
             },
-            plain_text: text.slice(1, -1),
+            plain_text: text.slice(1, -1).trim(),
             annotations: richText.annotations,
             href: richText.href,
           });
@@ -85,10 +85,10 @@ function convertEquationsInRichTexts(
           addRichText({
             type: "text",
             text: {
-              content: text,
+              content: text.trim(),
               link: richText.text.link,
             },
-            plain_text: text,
+            plain_text: text.trim(),
             annotations: richText.annotations,
             href: richText.href,
           });
